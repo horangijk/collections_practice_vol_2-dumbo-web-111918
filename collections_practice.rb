@@ -21,15 +21,25 @@ end
 
 def count_elements(array)
   new_array = []
-  array.each do |hash|
-    # this is where our if is going to be 
-    # if it doesnt already exist inside new_array 
-    new_array.push({:name => hash[:name], :count => 1})
-    # else 
-    match_new_array = new_array.select{|new_hash| hash[:name] == new_hash[:name]}
-    match_new_array[0][:count] += 1
-    end 
-  end
-  new_array
+  count = 0 
+  array.each do |old_hash|
+    old_hash[:count] = 0
+    name = old_hash[:name]
+    array.each do |new_hash|
+      if new_hash[:name] == name
+        old_hash[:count] += 1 
+      end 
+    end
+  end.uniq 
 end
 
+# def merge_data(keys, data)
+#   if :keys[:first_name] == :data 
+# end 
+
+def find_cool(cool)
+  if cool.include?("cool")
+    cool.to_hash
+  end
+end 
+  
